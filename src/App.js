@@ -8,6 +8,14 @@ import {
 import './App.css';
 
 function App() {
+
+  // Lembretes: Aqui aparece a exibição de "Lembretes Fictícios"
+  const [LembreteLista, setLembreteLista] = useState([
+    {"id": 1, "titulo": "Preparar Aula de Programação", "status": false},
+    {"id": 2, "titulo": "Fazer Feira", "status": false},
+    {"id": 3, "titulo": "Preparar Marmitas", "status": false}
+  ])
+
   return (
     <div className="container App">
 
