@@ -1,5 +1,5 @@
 body {
-  background-color: #333;
+  background-color: #c86b85;
   color: #fff;
 }
 
@@ -7,8 +7,8 @@ body {
   text-align: center;
 }
 
-.taskBg {
-  background-color: #555;
+.lembreteBg {
+  background-color: #e6a4b4;
   border-radius: 6px;
   margin-bottom: 20px;
   padding: 10px 140px 10px 15px;
@@ -17,14 +17,14 @@ body {
   position: relative;
 }
 
-.taskBg div {
+.lembreteBg div {
  display: flex;
   align-items: center;
 }
 
-.taskNumber {
-  color: #999;
-  border: 1px solid #999;
+.lembreteNumero {
+  color: #f3d7ca;
+  border: 1px solid #f3d7ca;
   border-radius: 50%;
   width: 26px;
   height: 26px;
@@ -36,16 +36,16 @@ body {
   justify-content: center;
 }
 
-.taskBg .taskText {
+.lembreteBg .lembreteTexto {
   flex: 1;
 }
 
-.taskBg .done .taskText {
+.lembreteBg .done .lembreteTexto {
   text-decoration: line-through;
   opacity: 0.3;;
 }
 
-.taskBg .iconsWrap {
+.lembreteBg .organizacaoIcones {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -54,17 +54,9 @@ body {
   display: inline-block;
 }
 
-.taskBg .iconsWrap span {
+.lembreteBg .organizacaoIcones span {
   display: inline-block;
   margin: 0px 10px 0 10px;
   cursor: pointer;
-  color: #00ff89;
-}
-
-.taskBg .iconsWrap span:hover {
-  color: yellow
-}
-
-.mr-20 {
-  margin-right: 20px;
+  color: #fff8b6;
 }
