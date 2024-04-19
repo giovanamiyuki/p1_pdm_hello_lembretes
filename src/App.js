@@ -11,10 +11,10 @@ function App() {
   /* Main State */
   //Lista de Lembretes
   const [toDo, setToDo] = useState([
-    {"id": 1, "title": "Preparar Aula de Programação", status: false},
-    {"id": 2, "title": "Fazer Feira", status: false},
-    {"id": 3, "title": "Preparar Marmitas", status: false},
-    {"id": 4, "title": "Ouvir Novo Álbum TTDP", status: false}
+    {"id": 1, "titulo": "Preparar Aula de Programação", status: false},
+    {"id": 2, "titulo": "Fazer Feira", status: false},
+    {"id": 3, "titulo": "Preparar Marmitas", status: false},
+    {"id": 4, "titulo": "Ouvir Novo Álbum TTDP", status: false}
   ])
 
   /* Estado Temporário */
@@ -26,7 +26,7 @@ function App() {
   const addTask = () => {
     if(newTask) {
       let num = toDo.length + 1;
-      let newEntry = { id: num, title: newTask, status: false}
+      let newEntry = { id: num, titulo: newTask, status: false}
       setToDo([...toDo, newEntry])
       setNewTask('');
     }
@@ -88,16 +88,16 @@ function App() {
             
               <div className={task.status ? 'done' : ''}>
                 <span className='taskNumber'>{index + 1}</span>
-                <span className='taskText'>{task.title}</span>
+                <span className='taskText'>{task.titulo}</span>
               </div>
               <div className='iconsWrap'>
-                <span title='Concluído / Não concluído'
+                <span titulo='Concluído / Não concluído'
                   onClick={ (e) => markDone(task.id) }
                 >
                   <FontAwesomeIcon icon={faSquareCheck} />
                 </span>
 
-                <span title='Apagar'
+                <span titulo='Apagar'
                   onClick={() => deleteTask(task.id)}
                 >
                   <FontAwesomeIcon icon={faTrashCan} />
