@@ -8,9 +8,9 @@ import {
 import './App.css';
 
 function App() {
-  /* Main State */
+  /* Main State do Projeto */
   //Lista de Lembretes
-  const [toDo, setToDo] = useState([
+  const [LembreteLista, setLembreteLista] = useState([
     {"id": 1, "titulo": "Preparar Aula de Programação", status: false},
     {"id": 2, "titulo": "Fazer Feira", status: false},
     {"id": 3, "titulo": "Preparar Marmitas", status: false},
@@ -19,86 +19,86 @@ function App() {
 
   /* Estado Temporário */
   // Temp State
-  const [newTask, setNewTask] = useState('');
+  const [LembreteEntrada, setLembreteEntrada] = useState('');
 
   /* Funções do app */
-  // Add task
-  const addTask = () => {
-    if(newTask) {
-      let num = toDo.length + 1;
-      let newEntry = { id: num, titulo: newTask, status: false}
-      setToDo([...toDo, newEntry])
-      setNewTask('');
+  // Adicionar Lembrete
+  const addLembrete = () => {
+    if(LembreteEntrada) {
+      let num = LembreteLista.length + 1;
+      let novaEntrada = { id: num, titulo: LembreteEntrada, status: false}
+      setLembreteLista([...LembreteLista, novaEntrada])
+      setLembreteEntrada('');
     }
   }
 
-  // Delete task
-  const deleteTask = (id) => {
-    let newTasks = toDo.filter( task => task.id !== id)
-    setToDo(newTasks);
+  // Apagar Lembrete
+  const apagarLembrete = (id) => {
+    let LembreteEntradas = LembreteLista.filter( lembrete => lembrete.id !== id)
+    setLembreteLista(LembreteEntradas);
   }
 
-  // Mark task as done or completed
-  const markDone = (id) => {
-    let newTask = toDo.map( task => {
-      if( task.id === id ) {
-        return ({ ...task, status: !task.status })
+  // Marcar lembrete como Concluído
+  const marcarConcluido = (id) => {
+    let LembreteEntrada = LembreteLista.map( lembrete => {
+      if( lembrete.id === id ) {
+        return ({ ...lembrete, status: !lembrete.status })
       }
-      return task;
+      return lembrete;
     })
-    setToDo(newTask);
+    setLembreteLista(LembreteEntrada);
   }
 
   return (
     <div className='container App'>
     <br /><br />
-    <h2> Hello, Lembretes </h2>  
+    <h2>✨ Hello, Lembretes ✨</h2>  
     <br /><br />
 
-  {/* Add Task */}
+  {/* Adicionar Lembrete */}
   <div className='row'>
     <div className='col'>
       <input 
         placeholder="Digite seu novo lembrete" // Adicionando o placeholder
-        value={newTask}
-        onChange={(e) => setNewTask(e.target.value)}
+        value={LembreteEntrada}
+        onChange={(e) => setLembreteEntrada(e.target.value)}
         className='form-control form-control-lg'
       />
     </div>
     <div className='col-auto'>
       <button
-      onClick={addTask}
+      onClick={addLembrete}
         className='btn btn-lg btn-success'
       >Adicionar Lembrete</button>
     </div>
   </div>
   <br />
 
-    {/* Display ToDos */}
+    {/* Exibir Lembretes */}
 
-    {toDo && toDo.length ? '' : 'Sem lembretes'}
+    {LembreteLista && LembreteLista.length ? '' : 'Sem lembretes'}
 
-    {toDo && toDo
-      .sort((a, b) => a.id > b.id ? 1 : -1)
-      .map( (task, index) => {
+    {LembreteLista && LembreteLista
+      .sort((a, b) => a.id > b.id ? 1 : -1) // Organizar a lista de lembretes em ordem
+      .map( (lembrete, index) => {
         return(
-          <React.Fragment key={task.id}>
+          <React.Fragment key={lembrete.id}>
 
-            <div className='col taskBg'>
+            <div className='col lembreteBg'>
             
-              <div className={task.status ? 'done' : ''}>
-                <span className='taskNumber'>{index + 1}</span>
-                <span className='taskText'>{task.titulo}</span>
+              <div className={lembrete.status ? 'done' : ''}>
+                <span className='lembreteNumero'>{index + 1}</span>
+                <span className='lembreteTexto'>{lembrete.titulo}</span>
               </div>
-              <div className='iconsWrap'>
-                <span titulo='Concluído / Não concluído'
-                  onClick={ (e) => markDone(task.id) }
+              <div className='organizacaoIcones'>
+                <span title='Concluído / Não concluído'
+                  onClick={ (e) => marcarConcluido(lembrete.id) }
                 >
                   <FontAwesomeIcon icon={faSquareCheck} />
                 </span>
 
-                <span titulo='Apagar'
-                  onClick={() => deleteTask(task.id)}
+                <span title='Apagar'
+                  onClick={() => apagarLembrete(lembrete.id)}
                 >
                   <FontAwesomeIcon icon={faTrashCan} />
                 </span>
